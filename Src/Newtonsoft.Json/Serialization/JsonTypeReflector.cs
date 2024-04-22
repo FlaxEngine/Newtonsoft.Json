@@ -72,6 +72,13 @@ namespace Newtonsoft.Json.Serialization
 	    internal static void ClearCache()
 	    {
 		    CreatorCache.Clear();
+		    CachedAttributeGetter<JsonConverterAttribute>.ClearCache();
+		    CachedAttributeGetter<JsonObjectAttribute>.ClearCache();
+		    CachedAttributeGetter<JsonContainerAttribute>.ClearCache();
+#if HAVE_DATA_CONTRACTS && HAVE_RUNTIME_SERIALIZATION
+		    CachedAttributeGetter<DataContractAttribute>.ClearCache();
+		    CachedAttributeGetter<DataMemberAttribute>.ClearCache();
+#endif
 #if !(NET20 || DOTNET)
 		    AssociatedMetadataTypesCache.Clear();
 		    _metadataTypeAttributeReflectionObject?.Clear();
