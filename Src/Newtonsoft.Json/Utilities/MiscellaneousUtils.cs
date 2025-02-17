@@ -49,12 +49,25 @@ namespace Newtonsoft.Json.Utilities
         }
 
         /// <summary>
+        /// Compares two objects data.
+        /// </summary>
+        /// <param name="objA">The object a.</param>
+        /// <param name="objB">The object b.</param>
+        /// <returns>True if both objects are equal, otherwise false.</returns>
+        public delegate bool ValueEqualsDelegate(object objA, object objB);
+
+        /// <summary>
+        /// The custom value comparision callback.
+        /// </summary>
+        public static ValueEqualsDelegate ValueEquals = DefaultValueEquals;
+
+        /// <summary>
         /// The default implementation of the values comparision function.
         /// </summary>
         /// <param name="objA">The object a.</param>
         /// <param name="objB">The object b.</param>
         /// <returns>True if both objects are equal, otherwise false.</returns>
-        public static bool ValueEquals(object? objA, object? objB)
+        public static bool DefaultValueEquals(object objA, object objB)
         {
             if (objA == objB)
             {
